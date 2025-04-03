@@ -7,14 +7,13 @@ library(readxl)
 # Read the Excel file
 turkey_s_HSD <- read_excel("/Users/guozekai/Downloads/turkey's HSD.xlsx")
 
-# Rename columns (remove spaces)
+# Rename to remove space in names
 names(turkey_s_HSD)[names(turkey_s_HSD) == "Smoker Status"] <- "SmokerStatus"
 colnames(turkey_s_HSD)[colnames(turkey_s_HSD) == "Forced Expiratory Volume in 1 second (FEV1) (liters)"] <- "FEV1"
 
 # Convert to factors
 turkey_s_HSD$SmokerStatus <- factor(turkey_s_HSD$SmokerStatus)
 turkey_s_HSD$Sex <- factor(turkey_s_HSD$Sex)
-
 
 # Levene's test (variance homogeneity)
 leveneTest(FEV1 ~ SmokerStatus * Sex, data = turkey_s_HSD)
