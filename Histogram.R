@@ -34,7 +34,7 @@ hist(P2$`Serum Folate (μg/L)`,
 loess_fit <- loess(hist_data$counts ~ hist_data$mids, span = 0.3)
 lines(hist_data$mids, predict(loess_fit), col = "red", lwd = 2)
 
-# Add normal curve
+# Add normal curve as reference
 x_vals <- seq(min(breaks), max(breaks), length.out = 100)
 scaling_factor <- sum(hist_data$counts) * bin_width
 y_vals <- dnorm(x_vals,
@@ -66,7 +66,7 @@ print(shapiro.test(P2$`Serum Folate (μg/L)`))
 # Outlier test (Grubbs)
 print(grubbs.test(P2$`Serum Folate (μg/L)`))
 
-# Kolmogorov–Smirnov test
+# Kolmogorov–Smirnov test 
 serum_folate <- P2$`Serum Folate (μg/L)`
 ks_result <- ks.test(
   serum_folate,
