@@ -8,8 +8,9 @@ library(readxl)
 turkey_s_HSD <- read_excel("/Users/guozekai/Downloads/turkey's HSD.xlsx")
 
 # Rename to remove space in names
-names(turkey_s_HSD)[names(turkey_s_HSD) == "Smoker Status"] <- "SmokerStatus"
+colnames(turkey_s_HSD)[colnames(turkey_s_HSD) == "Smoker Status"] <- "SmokerStatus"
 colnames(turkey_s_HSD)[colnames(turkey_s_HSD) == "Forced Expiratory Volume in 1 second (FEV1) (liters)"] <- "FEV1"
+
 
 # Convert to factors
 turkey_s_HSD$SmokerStatus <- factor(turkey_s_HSD$SmokerStatus)
